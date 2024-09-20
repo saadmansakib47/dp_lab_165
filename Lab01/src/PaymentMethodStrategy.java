@@ -1,3 +1,4 @@
-public interface PaymentMethodStrategy {
+public interface PaymentMethodStrategy
+{
     void processPayment(double amount);
 }

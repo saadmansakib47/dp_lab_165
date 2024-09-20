@@ -1,3 +1,4 @@
-public interface NotificationServiceStrategy {
+public interface NotificationServiceStrategy
+{
     void sendNotification(String message);
 }
