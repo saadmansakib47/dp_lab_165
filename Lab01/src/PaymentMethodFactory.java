@@ -1,6 +1,7 @@
 public class PaymentMethodFactory {
     public static PaymentMethodStrategy getPaymentMethod(String paymentMethod) {
-        switch (paymentMethod.toLowerCase()) {
+        switch (paymentMethod.toLowerCase())
+        {
             case "creditcard":
                 return new CreditCardPayment();
             case "paypal":

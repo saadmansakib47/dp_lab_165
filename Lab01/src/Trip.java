@@ -1,27 +1,49 @@
+import java.util.Random;
+
 public class Trip {
     private RideTypeStrategy rideTypeStrategy;
     private PaymentMethodStrategy paymentMethodStrategy;
     private NotificationServiceStrategy notificationServiceStrategy;
     private double distance;
-    private double baseFare;
-
-    public Trip(RideTypeStrategy rideTypeStrategy, PaymentMethodStrategy paymentMethodStrategy, NotificationServiceStrategy notificationServiceStrategy, double distance, double baseFare) {
-        this.rideTypeStrategy = rideTypeStrategy;
-        this.paymentMethodStrategy = paymentMethodStrategy;
-        this.notificationServiceStrategy = notificationServiceStrategy;
-        this.distance = distance;
-        this.baseFare = baseFare;
-    }
+    private double baseFare = 5.0; // Example base fare
 
     public void startTrip() {
-        double fare = rideTypeStrategy.calculateFare(distance, baseFare);
+
+        double fare = calculateFare();
         System.out.println("Trip started. Estimated fare: $" + fare);
         notificationServiceStrategy.sendNotification("Your trip has started. Estimated fare: $" + fare);
     }
 
     public void completeTrip() {
-        double fare = rideTypeStrategy.calculateFare(distance, baseFare);
+        double fare = calculateFare();
         paymentMethodStrategy.processPayment(fare);
         notificationServiceStrategy.sendNotification("Your trip is complete. Fare charged: $" + fare);
+    }
+
+    public double calculateDistance(String pickupLocation, String dropoffLocation) {
+        Random random = new Random();
+        this.distance = random.nextInt(99);
+        System.out.println("Calculated distance from " + pickupLocation + " to " + dropoffLocation + " is: " + this.distance + " km");
+        return this.distance;
+    }
+
+    public double calculateFare()
+    {
+        return rideTypeStrategy.calculateFare(distance, baseFare);
+    }
+
+    public void setRideTypeStrategy(RideTypeStrategy rideTypeStrategy)
+    {
+        this.rideTypeStrategy = rideTypeStrategy;
+    }
+
+    public void setPaymentMethodStrategy(PaymentMethodStrategy paymentMethodStrategy)
+    {
+        this.paymentMethodStrategy = paymentMethodStrategy;
+    }
+
+    public void setNotificationServiceStrategy(NotificationServiceStrategy notificationServiceStrategy)
+    {
+        this.notificationServiceStrategy = notificationServiceStrategy;
     }
 }

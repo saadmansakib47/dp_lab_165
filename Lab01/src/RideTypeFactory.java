@@ -1,5 +1,6 @@
 public class RideTypeFactory {
-    public static RideTypeStrategy getRideType(String rideType) {
+    public static RideTypeStrategy getRideType(String rideType)
+    {
         switch (rideType.toLowerCase()) {
             case "carpool":
                 return new CarpoolRide();

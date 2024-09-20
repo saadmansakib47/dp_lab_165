@@ -1,6 +1,9 @@
-public class NotificationFactory {
-    public static NotificationServiceStrategy getNotificationService(String notificationMethod) {
-        switch (notificationMethod.toLowerCase()) {
+public class NotificationFactory
+{
+    public static NotificationServiceStrategy getNotificationService(String notificationMethod)
+    {
+        switch (notificationMethod.toLowerCase())
+        {
             case "sms":
                 return new SMSNotification();
             case "email":
