@@ -1,4 +1,5 @@
 import java.util.Random;
+import java.util.Scanner;
 
 public class Trip
 {
@@ -19,6 +20,23 @@ public class Trip
         double fare = calculateFare();
         paymentMethodStrategy.processPayment(fare);
         notificationServiceStrategy.sendNotification("Your trip is complete. Fare charged: $" + fare);
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Rate your trip (1-5):");
+        int rating = 0 ;
+        while(true)
+        {
+            rating = scanner.nextInt();
+            if(rating>5 || rating<0)
+            {
+                System.out.println("Invalid Input. Please rate between (1-5).") ;
+            }
+            else
+            {
+                break;
+            }
+        }
+        System.out.println("Trip Rated:" + rating + "star(s), thank you!");
     }
 
     public double calculateDistance(String pickupLocation, String dropoffLocation)
